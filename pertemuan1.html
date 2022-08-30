@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <span v-html="message">
+            {{message}}
+        </span>
+        <br>
+        <b>{{greetings}}</b>
+        <br>
+        {{angka+7.2}}
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                  message : "<i>Hello World</i>",
+                  greetings : "Lah Ngatur",
+                  angka : 0.8
+                }
+            }
+        })
+
+        app.mount('#app')
+
+    </script>
+
+</body>
+</html>
