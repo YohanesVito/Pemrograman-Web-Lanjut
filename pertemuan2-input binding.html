@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="username" placeholder="Masukkan Username" />
+        <br>
+        <span>Selamat datang, {{username}}</span>
+        <br>
+        <br>
+        <input type="checkbox" id="makan" value="makan" v-model="hobi" />
+        <label for="makan">Makan</label>
+        <input type="checkbox" id="micek" value="micek" v-model="hobi" />
+        <label for="micek">Micek</label>
+        <input type="checkbox" id="mancing" value="mancing" v-model="hobi" />
+        <label for="mancing">Mancing</label>
+        <br>
+        <br>
+        <span>Hobi kamu, {{hobi}}</span>
+        <div>Hobi saya:  <span v-for="h in hobi">{{h}}, </span></div>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    username: '',
+                    hobi: []
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

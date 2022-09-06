@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        span{
+            color: black
+        }
+        .red{
+            color: red
+        }
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="username" placeholder="Masukkan Username" />
+        <input v-model="usia" placeholder="Masukkan Usia" />
+        <br>
+        <br>
+        <input type="radio" id="merah" value="red" v-model="warna"/>
+        <label for="merah">Merah</label>
+        <input type="radio" id="biru" value="blue" v-model="warna"/>
+        <label for="biru">Biru</label>
+        <br>
+        <span v-bind:style='{color: warna}'> Nama saya {{username}}, usia saya {{usia}}, warna kesukaan saya adalah {{warna}}</span>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    username: '',
+                    usia: '',
+                    warna: '',
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>
