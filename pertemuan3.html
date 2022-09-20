@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="doSomething()">ini fungsi satu</button>
+        <button @click="counter++">ini fungsi dua</button>
+        <button @click="aktif = aktif == 'Aktif' ? 'Tidak Aktif' : 'Aktif' ">{{aktif}}
+        </button>
+        <button @click="selamat('Yohanes Vito','Rizki')">Selamat 1</button>
+        <button @click="selamat2({namaDepan: 'Yohanes', namaBelakang: 'Darujati', prodi: 'Informatika'})">Selamat
+            2</button>
+        <br>
+        <input v-model="nama" /> <button @click="selamat3(nama)">Absen</button>
+        <input v-model="nama" /> <button @click="selamat4()">Absen Dulu</button>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    counter: 0,
+                    aktif: 'Aktif',
+                    nama: ""
+                }
+            },
+            methods: {
+                doSomething() {
+                    alert("Hello world")
+                },
+                doSomething2() {
+                    alert("Do Something")
+                },
+                selamat(nama, belakang) {
+                    alert("Selamat Datang" + belakang + nama)
+                },
+                selamat2(mahasiswa) {
+                    alert("Halo " + mahasiswa.namaBelakang + " " + mahasiswa.prodi)
+                },
+                selamat3(nama) {
+                    alert("Hi " + nama)
+                },
+                selamat4() {
+                    alert("Hi " + this.nama)
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

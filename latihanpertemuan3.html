@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="key" @keyup="filter()">
+        <div>
+            Nama: <span v-for="ln in listNama"><br>{{ln}} </span>
+        </div>
+        <div>
+            Nama: <span v-for="ln in newList"><br>{{ln}} </span>
+        </div>
+           
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    key: "",
+                    listNama: ["vito", "vita", "viti", "rizki", "rekzi", "rezki", "rziki", "daruajati"],
+                    newList: ""
+                }
+            },
+            methods: {
+                filter() {
+                    for(nama in this.listNama){
+                        if(nama.includes(this.key)){
+                            this.newList += nama
+                        }
+                    }
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>
