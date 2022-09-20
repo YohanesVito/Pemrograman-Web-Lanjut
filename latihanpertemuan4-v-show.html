@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div v-show="login">
+            <input v-model="username" placeholder="username">
+            <br>
+            <input v-model="password" placeholder="password">
+            <br>
+            <button @click="login = false; logout = true">Login</button>
+        </div>
+        <div v-show="logout">
+            <h1>Selamat datang {{username}}</h1>
+            <button @click="login = true; logout = false">Logout</button>
+        </div>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    login: true,
+                    logout: false,
+                    username: ""
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

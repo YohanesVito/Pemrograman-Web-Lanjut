@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="nama in lstNama">{{nama}} </li>
+        </ol>
+
+        <input v-model="merk" placeholder="Merk">
+        <input type='number' v-model="jumlah" placeholder="Jumlah">
+        <button @click="tambah(merk,jumlah)">Tambah</button>
+        <ul>
+            <li v-for="hp in over100" :key="hp.merk">{{hp.merk}} X {{hp.jml}} </li>
+        </ul>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    lstNama: ['agus', 'bambang', 'chandra'],
+                    lstHP: [
+                        {merk: 'ipon', jml: 50},
+                        {merk: 'nukio', jml: 2},
+                        {merk: 'blumi', jml: 25},
+                        ],
+                }
+            },
+            methods: {
+                tambah(a,b){
+                    let ls = this.lstHP
+                    for(let i=0;i<ls.length;i++){
+                        if(ls[i].merk == a ){
+                            ls[i].jml += b
+                            return
+                        }
+                    }
+                    return ls.push({merk: a, jml: b})
+                }
+            },
+            computed:{
+                over100(){
+                    var listBaru = []
+                    let ls = this.lstHP
+                    for(let i=0;i<ls.length;i++){
+                        if(ls[i].jml > 100){
+                            listBaru.push(ls[i])
+                        }
+                    }
+                    return listBaru
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

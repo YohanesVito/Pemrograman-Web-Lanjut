@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="nilai">
+       <h1 v-if="nilai >= 85">A</h1>
+       <h1 v-else-if="nilai >= 80">A-</h1>
+       <h1 v-else-if="nilai >= 75">B+</h1>
+       <h1 v-else-if="nilai >= 70">B</h1>
+       <h1 v-else-if="nilai >= 65">B-</h1>
+       <h1 v-else-if="nilai >= 60">C+</h1>
+       <h1 v-else-if="nilai >= 55">C</h1>
+       <h1 v-else-if="nilai >= 45">D</h1>
+       <h1 v-else>E</h1>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    nilai: ""
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

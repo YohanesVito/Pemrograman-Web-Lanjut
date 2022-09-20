@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <button @click="isShow = !isShow">Tombol Aktif</button>
+        <!-- v-show elementnya tidak hilang -> jadi lebih ringan karena tidak rendar-render-->
+        <h1 v-if="isShow">ini v-if</h1>
+        <h1 v-show="isShow">ini v-show</h1>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data() {
+                return {
+                    isShow: true,
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>
