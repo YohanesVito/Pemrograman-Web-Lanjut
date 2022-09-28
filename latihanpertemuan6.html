@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+<!-- 
+        <barang
+        v-for="barang in listBarang" 
+        v-bind:nama="barang.nama"
+        v-bind:harga="barang.harga"
+        v-bind:jumlah="barang.jumlah"
+        >
+    </barang> -->
+        
+    <ul>
+        <li>
+            <barang
+            v-for="barang in listBarang" 
+            v-bind:nama="barang.nama"
+            v-bind:harga="barang.harga"
+            v-on:parent-ingpo="parentIngpo($event)"
+            >
+        </li>
+    </ul>
+    <h3>Isi Cart: </h3>
+        <div v>{{total}}</div>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data(){
+                return{
+                    listBarang:[
+                        {nama:"Flashdisk",harga:"50000"},
+                        {nama:"Buku Tulis",harga:"5000"},
+                        {nama:"Pensil",harga:"3000"}
+                    ],
+                    total: ""
+                }
+            },
+            methods:{
+                //parameter hanya bisa 1
+                parentIngpo(barang){
+                    alert(barang.nama + " " + barang.jumlah + " "+ barang.harga)
+                    this.total += barang.harga
+                }
+            }
+        })
+        app.component('barang',{
+            props: ["nama","harga"],
+            template: `<div>{{nama}}: Rp {{harga}} <button @click="$emit('parent-ingpo',{nama: nama, harga: harga})" >Tambahkan</button></div>`,
+
+            //kalau mau pake methods di parent
+            // template: `<button @click="$emit('parent-ingpo',{nama: nama, harga: harga})">{{harga}}</button>`,
+            methods: {
+                info(nama,harga){
+                    alert(nama)
+                    this.total += harga
+                },
+                update(){
+                    
+                }
+            },
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

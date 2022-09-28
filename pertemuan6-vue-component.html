@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <button-counter/>
+        <mahasiswa nim="owkaow" nama="tol" ipk="wjwjwj"></mahasiswa>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            // lokal 
+            // components: {
+            //     'button-counter':{
+            //         data(){
+            //             return{
+            //                 count:0
+            //             }
+            //         },
+            //     template: "<button @click='count++'>Jumlah:{{count}}</button"
+            //     }
+            // }
+        })
+
+        //global
+        // app.component('button-counter',{
+        //     data(){
+        //         return{
+        //             count :0
+        //         }
+        //     },
+        //     template: "<button @click='count++'>Jumlah:{{count}}</button"
+        // })
+            //global
+             app.component('mahasiswa',{
+                props: ["nim","nama","ipk"],
+                template: "<div><b>{{nim}}</b> <i>{{nama}}</i> <i>{{ipk}}</i>",
+                    //kalau nama variable didalam properti sama dengan data, maka yang akan ditampilkan yang ada di data
+                // data(){
+                //     return{
+                //         count :0
+                //     }
+                // },
+                // template: "<button @click='count++'>Jumlah:{{count}}</button"
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>

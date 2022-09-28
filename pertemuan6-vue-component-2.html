@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <mahasiswa
+        v-for="mhs in listMahas" 
+        v-bind:nim="mhs.nim"
+        v-bind:nama="mhs.nama"
+        v-bind:ipk="mhs.ipk"
+        v-on:parent-ingpo="parentIngpo($event)">
+    </mahasiswa>
+    </div>
+
+    <!-- bagian vue -->
+    <script>
+        var app = Vue.createApp({
+            data(){
+                return{
+                    listMahas:[
+                        {nim:"71190429",nama:"Vito",ipk:"5"}
+                    ]
+                }
+            },
+            methods:{
+                //parameter hanya bisa 1
+                parentIngpo(mahasiswa){
+                    alert(mahasiswa.nama + " " + mahasiswa.ipk)
+                }
+            }
+        })
+        app.component('mahasiswa',{
+            props: ["nim","nama","ipk"],
+            // template: '<button @click="info(nama,ipk)">{{nim}}</button>',
+
+            //kalau mau pake methods di parent
+            template: `<button @click="$emit('parent-ingpo',{nama: nama, ipk: ipk})">{{nim}}</button>`,
+            methods: {
+                info(nama,ipk){
+                    alert(nama + " " + ipk)
+                }
+            },
+        })
+        app.mount('#app')
+    </script>
+
+</body>
+
+</html>
